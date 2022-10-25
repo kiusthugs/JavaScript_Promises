@@ -22,3 +22,17 @@ function getList() {
 
 // TODO: If the promise rejects with the failure object
 // Display the failure message in the paragraph element with id="error" (check index.html file)
+let paragraph = document.querySelector('#error')
+let list = document.querySelector('#list')
+
+getList()
+  .then((result) => {
+    for (let i = 0; i < result.length; i++) {
+      let li = document.createElement('LI')
+      li.textContent = result[i]
+      list.appendChild(li)
+    }
+  })
+  .catch((err) => {
+    paragraph.textContent = err.message
+  })
